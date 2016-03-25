@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<!-- Created by Brantley Gilbert of ANTARES Group, Inc.
+	 For assistance please email bgilbert@antaresgroupinc.com -->
+<html>
+<head>
+<meta charset=utf-8 />
+<title>BALES Team Members</title>
+<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+<script src='http://bioenergylandscapedesign.com/wp-content/uploads/2016/03/mapbox.js'></script>
+<link href='http://bioenergylandscapedesign.com/wp-content/uploads/2016/03/mapbox.css' rel='stylesheet' />
+<style>
+  body { margin:0; padding:0; }
+  #map { position:absolute; top:0; bottom:0; width:100%; }
+</style>
+</head>
+<body>
+
+
+<div id='map'></div>
+
+<script>
+L.mapbox.accessToken = 'pk.eyJ1IjoiYW50YXJlc2dyb3VwaW5jIiwiYSI6ImNpbHY3c3dsMTAxamJ2ZGtzbXAwaHF5bjIifQ.GUuOMQfHS-2iBrHp3z9PdQ';
+
+ map = L.mapbox.map('map', 'mapbox.streets') 
+ //set initial map view to center on U.S.
+    .setView([37.051155, -98.306339], 5);
+	
+	//create map layer (points) and add it to the map
+var myLayer = L.mapbox.featureLayer().addTo(map);
+	
+	//JSON data (GeoJSON format) for points of interest (called "features")
+var geojson = {
+    type: 'FeatureCollection',
+    features: [	
+		{
+		// ANTARES
+		// this feature is in the GeoJSON format: see geojson.org for the full specification
+			type: 'Feature',
+			geometry: {
+				type: 'Point',
+				// coordinates here are in longitude, latitude order because
+				// x, y is the standard for GeoJSON and many formats
+				coordinates: [
+				  -76.834179,
+				  38.951186 
+				]
+			},
+			properties: {
+				//Logo, can also replace with company name
+				title: '<center><a target="_blank" href="http://antaresgroupinc.com/"><img src="http://bioenergylandscapedesign.com/wp-content/uploads/2015/08/Best-Antares-Pic-300x76.png" height=80px width=200px/></center>',
+				//company description
+				description: 'Antares Group, Inc. is a renewable energy consulting firm, and is the team leader for the Bioenergy Landscape Design Project. The company was established in 1992, and has worked with each team member on past projects. Antares has experience organizing and handling multi-year projects funded by the Department of Energy, including the BALES project, and has engineering and technical experience in the bioenergy industry. They will serve in a similar capacity for this project.',
+				// one can customize markers by adding simplestyle properties
+				// https://www.mapbox.com/guides/an-open-platform/#simplestyle
+				'marker-size': 'large',
+				'marker-color': '#BE9A6B',
+				'marker-symbol': 'commercial'
+				}
+		},
+    	{
+			// INL
+			type: 'Feature',
+			geometry: {
+				type: 'Point',
+				// coordinates here are in longitude, latitude order because
+				// x, y is the standard for GeoJSON and many formats
+				coordinates: [
+				  -112.049335,
+				  43.517338 
+				]
+			},
+			properties: {
+				title: '<center><a target="_blank" href="https://www.inl.gov/"><img src="https://media.glassdoor.com/sql/35236/inl-squarelogo-1416640586425.png"/></center>',
+				description: 'The Idaho National Lab is a national research laboratory with extensive knowledge and research relating to the bioenergy industry since they were a lead researcher on the BALES Project. For the landscape design project, they will lead the team’s sustainable landscape design and assessments by working alongside of AgSolver. Following their research, they will develop a user deployable decision support tool that will provide landscape design input for those wanting to maximize the value of adding energy crops into their current monocultures. Lastly, they will also create models and analyses of feedstock logistic operations.',
+				'marker-size': 'large',
+				'marker-color': '#BE9A6B',
+				'marker-symbol': 'commercial'
+				}
+		},
+		{
+			// FDCE
+			type: 'Feature',
+			geometry: {
+				type: 'Point',
+				//longitude, latitude (x,y)
+				coordinates: [
+				  -83.068739,
+				  40.092143 
+				]
+			},
+			properties: {
+				title: '<center><a target="_blank" href="http://www.fdcenterprises.com/"><img src="http://doebales.org/wp-content/uploads/2013/01/FDCE2-e1438623175306.jpg"/></center>',
+				description: 'FDC Enterprises is the prime contractor for two advanced biomass logistics supply chain development and demonstration agreements with the Department of Energy. Additionally, the FDCE owns and operates both conventional and advanced biomass logistics equipment for harvesting and delivering biomass. This group has been a lead harvest contractor for Poet-DSM for the past two years, gathering biomass logistics information; this information will be shared and analyzed in this project.',
+				'marker-size': 'large',
+				'marker-color': '#BE9A6B',
+				'marker-symbol': 'commercial'
+			}
+		},
+		{
+			// POET DSM
+			type: 'Feature',
+			geometry: {
+				type: 'Point',
+				//longitude, latitude (x,y)
+				coordinates: [
+				  -96.782175,
+				  43.569697 
+				]
+			},
+			properties: {
+				title: '<center><a target="_blank" href="http://poet-dsm.com/"><img src="http://poet-dsm.com/resources/images/poet-dsm.png"/></center>',
+				description: 'Poet-DSM is a biorefining company merged by Poet and DSM. Poet was the primary biorefinery used in the BALES Project, and will assist the Bioenergy Landscape Design Project since their feedstocks are the main subjects in this project.',
+				'marker-size': 'large',
+				'marker-color': '#BE9A6B',
+				'marker-symbol': 'commercial'
+			}
+		},
+		{
+			// USDA-ARS
+			type: 'Feature',
+			geometry: {
+				type: 'Point',
+				//longitude, latitude (x,y)
+				coordinates: [
+				  -77.030011,
+				  38.886765 
+				]
+			},
+			properties: {
+				title: '<center><a target="_blank" href="http://www.ars.usda.gov/main/main.htm"><img src="http://bioenergylandscapedesign.com/wp-content/uploads/2013/01/USDA-Ag-research-e1439218604624.jpg"/></center>',
+				description: 'USDA Agricultural Research Services is a research department within the Department of Agriculture with numerous offices located throughout the Midwestern United States. The organization has experience in environmental quality monitoring, and is deeply involved in implementing agricultural management practices with local grass-roots. For this project, the USDA ARS will collect targeted feedstock and environmental assessment data to determine the effects of the landscape design.',
+				'marker-size': 'large',
+				'marker-color': '#BE9A6B',
+				'marker-symbol': 'commercial'
+			}
+		},
+		{
+			// SOUTH FORK
+			type: 'Feature',
+			geometry: {
+				type: 'Point',
+				//longitude, latitude (x,y)
+				coordinates: [
+				  -93.268654,
+				  42.507620 
+				]
+			},
+			properties: {
+				title: '<center><a target="_blank" href="http://www.southforkwatershed.org/"><img src="http://www.southforkwatershed.org/uploads/2/6/4/6/26464746/3197184.png?330"/></center>',
+				description: 'The South Fork Watershed Alliance is the first and oldest farmer-led watershed conservation group in Iowa. This group will help the project team build relationships with local stakeholders and help implement conservation practices. Their primary role in this project is to organize the outreach portion of this effort by using their relationships to keep those at stake informed.',
+				'marker-size': 'large',
+				'marker-color': '#BE9A6B',
+				'marker-symbol': 'commercial'
+			}
+		},
+		{
+		// MONSANTO
+			type: 'Feature',
+			geometry: {
+				type: 'Point',
+				//longitude, latitude (x,y)
+				coordinates: [
+				  -90.399415,
+				  38.670125 
+				]
+			},
+			properties: {
+				title: '<center><a target="_blank" href="http://www.monsanto.com/pages/default.aspx"><img src="http://doebales.org/wp-content/uploads/2013/01/monsanto1-e1438624377315.png"/></center>',
+				description: 'Monsanto’s corn stover sustainability group, led by Kevin Coffman, will assist this project team by researching and implementing methods for efficient removal and end-use of corn stover from corn crops. This group has experience working with corn stover, and conducts long-term storage research on a farm in Iowa. Additionally, they test harvesting equipment with various methods for sustainability and economic analysis. They will allow this project team to have access to their research.',
+				'marker-size': 'large',
+				'marker-color': '#BE9A6B',
+				'marker-symbol': 'commercial'
+			}
+		},
+		{
+		// DUPONT
+			type: 'Feature',
+			geometry: {
+				type: 'Point',
+				//longitude, latitude (x,y)
+				coordinates: [
+				  -75.605072,
+				  39.755411 
+				]
+			},
+			properties: {
+				title: '<center><a target="_blank" href="http://www.dupont.com/corporate-functions/our-company/businesses/industrial-biosciences.html"><img src="http://bioenergylandscapedesign.com/wp-content/uploads/2013/01/dupont-e1439218915491.jpg"/></center>',
+				description: 'DuPont Industrial Biosciences is a lignocellulosic biofuel company that operates biorefineries in the United States. Their feedstocks are some of the subjects of this project; as a result, they will provide relevant information for those working on the landscape design project.',
+				'marker-size': 'large',
+				'marker-color': '#BE9A6B',
+				'marker-symbol': 'commercial'
+			}
+		},
+		{
+		// ORNL
+			type: 'Feature',
+			geometry: {
+				type: 'Point',
+				//longitude, latitude (x,y)
+				coordinates: [
+				  -84.310018,
+				  35.931194 
+				]
+			},
+			properties: {
+				title: '<center><a target="_blank" href="https://www.ornl.gov/"><img src="http://bioenergylandscapedesign.com/wp-content/uploads/2015/08/oak-Ridge-300x155.png"/></center>',
+				description: 'The Oak Ridge National Lab is a national research laboratory with extensive knowledge on environmental preservation. They have experience working on bioenergy projects, including the ongoing BALES Project. For the landscape design project, the ORNL will be in charge of assessing environmental sustainability indicators. Recently, they identified 36 indicators of bioenergy sustainability in twelve main categories, and developed analytical and communication tools; these will assist the project team when implementing their solutions. Additionally, they have been involved in the Council of Sustainable Biomass Production/Biomass Market Access Standard, and will create easily adopted measures of sustainability.',
+				'marker-size': 'large',
+				'marker-color': '#BE9A6B',
+				'marker-symbol': 'commercial'
+			}
+		},
+		{
+		// Argonne
+			type: 'Feature',
+			geometry: {
+				type: 'Point',
+				//longitude, latitude (x,y)
+				coordinates: [
+				  -87.981893,
+				  41.713687 
+				]
+			},
+			properties: {
+				title: '<center><a target="_blank" href="http://www.anl.gov/"><img src="http://bioenergylandscapedesign.com/wp-content/uploads/2013/01/argonne-300x140.jpg"/></center>',
+				description: 'The Argonne National Lab is a national laboratory with locations throughout the globe that performs research in many scientific fields. For this project, the ANL will run the Soil and Water Assessment Tool model analyses for the three chosen demonstration areas.',
+				'marker-size': 'large',
+				'marker-color': '#BE9A6B',
+				'marker-symbol': 'commercial'
+			}
+		},
+		{
+		// DOE-BETO
+			type: 'Feature',
+			geometry: {
+				type: 'Point',
+				//longitude, latitude (x,y)
+				coordinates: [
+				  -77.025599,
+				  38.887014 
+				]
+			},
+			properties: {
+				title: '<center><a target="_blank" href="http://www.energy.gov/eere/bioenergy/bioenergy-technologies-office"><img src="http://doebales.org/wp-content/uploads/2013/01/doebadge-e1438711070278.jpg"/></center>',
+				description: 'The Department of Energy’s BioEnergy Technologies Office oversees the development of the bioenergy industry in the United States. They provide funding for the bioenergy landscape design project.',
+				'marker-size': 'large',
+				'marker-color': '#BE9A6B',
+				'marker-symbol': 'commercial'
+			}
+		},
+		{
+		// Iowa State University
+			type: 'Feature',
+			geometry: {
+				type: 'Point',
+				//longitude, latitude (x,y)
+				coordinates: [
+				  -93.646363,
+				  42.026621 
+				]
+			},
+			properties: {
+				title: '<center><a target="_blank" href="https://www.iastate.edu/"><img src="http://bioenergylandscapedesign.com/wp-content/uploads/2013/01/iowastate.jpg"/></center>',
+				description: 'Iowa State University is a public university with a strong research background. For this project, they will upgrade, demonstrate and report results each year for the Material Other than Grain combine-baler equipment.',
+				'marker-size': 'large',
+				'marker-color': '#BE9A6B',
+				'marker-symbol': 'commercial'
+			}
+		},
+		{
+		// PacificAg
+			type: 'Feature',
+			geometry: {
+				type: 'Point',
+				//longitude, latitude (x,y)
+				coordinates: [
+				  -119.292834,
+				  45.807543 
+				]
+			},
+			properties: {
+				title: '<center><a target="_blank" href="http://www.pacificag.com/"><img src="http://bioenergylandscapedesign.com/wp-content/uploads/2013/01/pacificag-e1439219475311.jpg"/></center>',
+				description: 'PacificAg is a biomass harvesting company assisting Abengoa Bioenergy, located in Kansas. PacificAg will help the team analyze key harvest and crop management issues within the biomass supply shed.',
+				'marker-size': 'large',
+				'marker-color': '#BE9A6B',
+				'marker-symbol': 'commercial'
+			}
+		},
+		{
+		// BMAS
+			type: 'Feature',
+			geometry: {
+				type: 'Point',
+				//longitude, latitude (x,y)
+				coordinates: [
+				  -88.227106,
+				  40.102032 
+				]
+			},
+			properties: {
+				title: '<center><a target="_blank" href="http://biomasstoolbox.org/"><img src="http://static1.squarespace.com/static/51a7c5b8e4b010cba53ef45c/t/527934b5e4b0c3311520c8c4/1402084400050/?format=1500w"/></center>',
+				description: 'The BMAS Group works to manage and facilitate the implementation of an intricate, science-based biomass sustainability standard. Originally, the group was co-funded by the USDA NRCS and member organizations, under the CSBP for their work involving a multi-year standards development process. The BMAS Group will work closely with Antares and lead the creation and testing of a web-based sustainability certification for biomass.',
+				'marker-size': 'large',
+				'marker-color': '#BE9A6B',
+				'marker-symbol': 'commercial'
+			}
+		},
+		{
+		// AGSOLVER
+			type: 'Feature',
+			geometry: {
+				type: 'Point',
+				//longitude, latitude (x,y)
+				coordinates: [
+				  -93.642812,
+				  42.049139 
+				]
+			},
+			properties: {
+				title: '<center><a target="_blank" href="http://agsolver.com/"><img src="http://doebales.org/wp-content/uploads/2013/01/agsolverlogo-e1438711857601.png"/></center>',
+				description: 'AgSolver is a technology company that creates analytical tools to help land managers improve their decision-making abilities within their fields; these tools are a combination of thoroughly developed models and information on conservation management practices. Their technology allows land owners to immediately assess the economic and environmental impacts of their practices. For this project, they will allow for the use of their analysis software and will assist with analyses.',
+				'marker-size': 'large',
+				'marker-color': '#BE9A6B',
+				'marker-symbol': 'commercial'
+			}
+		},
+		{
+		// Purdue University
+			type: 'Feature',
+			geometry: {
+				type: 'Point',
+				//longitude, latitude (x,y)
+				coordinates: [
+				  -86.918943,
+				  40.424015 
+				]
+			},
+			properties: {
+				title: '<center><a target="_blank" href="http://www.purdue.edu/"><img src="http://bioenergylandscapedesign.com/wp-content/uploads/2013/01/purdue-300x94.png"/></center>',
+				description: 'Purdue University is a public university with a research sector located in Indiana. They will assist the Bioenergy Landscape Design Team by performing economic analysis of alternative landscape designs, both on-side and off-site social costs of conservation practice and integrated landscape adoption.',
+				'marker-size': 'large',
+				'marker-color': '#BE9A6B',
+				'marker-symbol': 'commercial'
+			}
+		},
+		{
+		// Penn State
+			type: 'Feature',
+			geometry: {
+				type: 'Point',
+				//longitude, latitude (x,y)
+				coordinates: [
+				  -77.852020,
+				  40.813279 
+				]
+			},
+			properties: {
+				title: '<center><a target="_blank" href="http://www.psu.edu/"><img src="http://bioenergylandscapedesign.com/wp-content/uploads/2013/01/pennstate-e1439219987899.png"/></center>',
+				description: 'Penn State University is a public college immensely involved in research in multiple fields. For this project, the school will work with the INL and the ORNL by providing graduate students and senior advisors to help the labs analyze and develop models throughout the project.',
+				'marker-size': 'large',
+				'marker-color': '#BE9A6B',
+				'marker-symbol': 'commercial'
+			}
+		},
+		{
+		// SCS
+			type: 'Feature',
+			geometry: {
+				type: 'Point',
+				//longitude, latitude (x,y)
+				coordinates: [
+				  -122.300838,
+				  37.838106 
+				]
+			},
+			properties: {
+				title: '<center><a target="_blank" href="http://www.scsglobalservices.com/"><img src="http://bioenergylandscapedesign.com/wp-content/uploads/2013/01/sciencecertification-300x112.jpg"/></center>',
+				description: 'SCS is primarily known for developing sustainability standards for multiple industries. A senior consultant and auditor at the company, Michael Keys, will lead their company to guide Antares and BMAS staff while forming and implementing a biomass sustainability certification process that will be created in this project.',
+				'marker-size': 'large',
+				'marker-color': '#BE9A6B',
+				'marker-symbol': 'commercial'
+			}
+		},
+		{
+		// ATIP
+			type: 'Feature',
+			geometry: {
+				type: 'Point',
+				//longitude, latitude (x,y)
+				coordinates: [
+				  -97.105124,
+				  32.733288 
+				]
+			},
+			properties: {
+				title: '<center><a target="_blank" href="http://atipfoundation.com/"><img src="http://bioenergylandscapedesign.com/wp-content/uploads/2013/01/atip-300x130.png"/></center>',
+				description: 'ATIP aims at funding and leveraging agricultural research from the USDA ARS team. Most of their funding members include: The Center for Innovation at Arlington (here), Poet-DSM, DuPont, Pioneer, Monsanto, and the National Corn Growers Association, and others.',
+				'marker-size': 'large',
+				'marker-color': '#BE9A6B',
+				'marker-symbol': 'commercial'
+			}
+		},
+		{
+		// USGS
+			type: 'Feature',
+			geometry: {
+				type: 'Point',
+				//longitude, latitude (x,y)
+				coordinates: [
+				  -77.367474,
+				  38.947208 
+				]
+			},
+			properties: {
+				title: '<center><a target="_blank" href="http://www.usgs.gov/"><img src="http://bioenergylandscapedesign.com/wp-content/uploads/2013/01/USGS-300x110.png"/></center>',
+				description: 'The USGS monitors water quality in multiple areas within the North Raccoon Water Shed located in Iowa. With their offices located in Iowa City, Iowa, their contributions to the project will be led by Stephen Kalkhoff, a Manager and Research Hydrologist. They will assist the project team by monitoring and reporting their data relevant to the project.',
+				'marker-size': 'large',
+				'marker-color': '#BE9A6B',
+				'marker-symbol': 'commercial'
+			}
+		},
+		{
+		// Iowa Ag BioFibers
+			type: 'Feature',
+			geometry: {
+				type: 'Point',
+				//longitude, latitude (x,y)
+				coordinates: [
+				  -95.204892,
+				  41.631943 
+				]
+			},
+			properties: {
+				title: '<center><a target="_blank" href="http://www.iabf.biz/"><img src="http://bioenergylandscapedesign.com/wp-content/uploads/2013/01/iowabiofibers-e1439220314463.jpg"/></center>',
+				description: 'IowaAg BioFibers is a small business primarily involved in the sustainable harvest of agricultural residues and their modification and use as an animal feed source as well as energy source. IABF will collect and process some of the biomass from this project into biofuels and solid fuel. The IBAF staff will observe and review project plans, progress and report documents, and give feedback with other researchers in this project.',
+				'marker-size': 'large',
+				'marker-color': '#BE9A6B',
+				'marker-symbol': 'commercial'
+			}
+		}
+	]
+};
+
+	//add points of interest to myLayer
+myLayer.setGeoJSON(geojson);
+
+</script>
+
+
+</body>
+</html>
